@@ -1,48 +1,75 @@
 import Head from "next/head";
 
 const employees = [
-  { id: 1, name: "Priya Rao", initials: "PR", dept: "Engineering", mood: 8.5, status: "Happy", lastSeen: "Today", color: "#6C5CE7", bg: "#EDE9FE" },
-  { id: 2, name: "Arjun Mehta", initials: "AM", dept: "Product", mood: 6.0, status: "Okay", lastSeen: "Today", color: "#0F6E56", bg: "#E1F5EE" },
-  { id: 3, name: "Sneha R.", initials: "SR", dept: "Design", mood: 3.2, status: "Low", lastSeen: "Today", color: "#A32D2D", bg: "#FCEBEB" },
-  { id: 4, name: "Vikram K.", initials: "VK", dept: "Sales", mood: 9.1, status: "Thriving", lastSeen: "Today", color: "#185FA5", bg: "#E6F1FB" },
-  { id: 5, name: "Nisha K.", initials: "NK", dept: "HR", mood: 5.5, status: "Neutral", lastSeen: "Today", color: "#854F0B", bg: "#FAEEDA" },
+  { id: "CT00011", name: "Apratim Mahata", dept: "Technology", designation: "Junior Developer", reporting: "Vedang Singh", joined: "01 Sep 2024" },
+  { id: "CT00030", name: "Ronit Shrestha", dept: "Ecommerce", designation: "Shopify Developer", reporting: "Suman Saha", joined: "18 Aug 2025" },
+  { id: "CT00031", name: "Muskan Mondal", dept: "Design", designation: "Photoshop Specialist", reporting: "Soumya Kanta Mohanty", joined: "20 Aug 2025" },
+  { id: "CT00013", name: "Shubham Pandey", dept: "Technology", designation: "Junior Software Developer", reporting: "Vedang Singh", joined: "17 Feb 2025" },
+  { id: "CT00049", name: "Tilak Rathoure", dept: "Technology", designation: "Full Stack Intern", reporting: "Apratim Mahata", joined: "08 Jan 2026" },
+  { id: "CT00015", name: "Hrithik Singh", dept: "Site Operations", designation: "Site Ops", reporting: "Vedang Singh", joined: "24 Feb 2025" },
+  { id: "CT00010", name: "Ruhbana Hasan", dept: "Ecommerce", designation: "Content Analyst", reporting: "Soumya Kanta Mohanty", joined: "04 Feb 2025" },
+  { id: "CT00037", name: "Swastik Sharma", dept: "Technology", designation: "Full Stack Intern", reporting: "Apratim Mahata", joined: "15 Oct 2025" },
+  { id: "CT00026", name: "Mohan Nandanawad", dept: "Site Operations", designation: "Web Analyst", reporting: "Vedang Singh", joined: "02 Jun 2025" },
+  { id: "CT00043", name: "Shreyansh Srivastava", dept: "Technology", designation: "Full Stack Intern", reporting: "Apratim Mahata", joined: "12 Nov 2025" },
+  { id: "CT00038", name: "Ashvin Tyagi", dept: "Marketing", designation: "Asst Manager - Growth Marketing", reporting: "Parveen Jahan", joined: "21 Oct 2025" },
+  { id: "CT00023", name: "Soumesh Kundu", dept: "Technology", designation: "Full Stack Intern", reporting: "Apratim Mahata", joined: "19 May 2025" },
+  { id: "CT0004", name: "Madhushree BJ", dept: "Design", designation: "Design Lead", reporting: "Vedang Singh", joined: "01 Dec 2024" },
+  { id: "CT00034", name: "Aditya Sharma", dept: "Site Operations", designation: "Data Analyst Intern", reporting: "Hrithik Singh", joined: "15 Sep 2025" },
+  { id: "CT00028", name: "Sushil Kumar", dept: "Site Operations", designation: "Senior Shopify Developer", reporting: "Suman Saha", joined: "14 Jul 2025" },
+  { id: "CT0001", name: "Vedang Singh", dept: "Site Operations", designation: "Site Ops Head", reporting: "", joined: "26 Jun 2024" },
+  { id: "CT00012", name: "Soumya Kanta Mohanty", dept: "Ecommerce", designation: "Head of E-commerce Operations", reporting: "Vedang Singh", joined: "03 Feb 2025" },
+  { id: "CT00053", name: "Shaique Hossain", dept: "Marketing", designation: "Asst Manager CRM & Analytics", reporting: "Manav Goel", joined: "24 Feb 2026" },
+  { id: "CT00020", name: "Rahul Bhatt", dept: "Site Operations", designation: "Associate Product Manager", reporting: "Parveen Jahan", joined: "21 Apr 2025" },
+  { id: "CT00014", name: "Alok Kumar Choudhary", dept: "Ecommerce", designation: "Ecommerce Executive", reporting: "Soumya Kanta Mohanty", joined: "19 Feb 2025" },
+  { id: "CT0009", name: "Khushi Ash", dept: "Human Resource", designation: "Assistant Manager HR", reporting: "Parveen Jahan", joined: "21 Jan 2025" },
+  { id: "CT0007", name: "Suman Saha", dept: "Technology", designation: "Lead Web Developer", reporting: "Parveen Jahan", joined: "01 Jan 2025" },
+  { id: "CT00051", name: "Pervez Ilyasi", dept: "Technology", designation: "Full-Stack Developer", reporting: "Vedang Singh", joined: "10 Feb 2026" },
+  { id: "CT00032", name: "Syeda Rahmat", dept: "Design", designation: "Junior UI/UX Designer", reporting: "Madhushree BJ", joined: "02 Mar 2026" },
+  { id: "CT00046", name: "Manikanteswara Reddy", dept: "Technology", designation: "QA Engineer", reporting: "Suhita Paik", joined: "01 Dec 2025" },
+  { id: "CT00019", name: "Vadde Thirumalesh", dept: "Site Operations", designation: "Quality Analyst", reporting: "Suhita Paik", joined: "14 Apr 2025" },
+  { id: "CT00036", name: "Deepak Kumar", dept: "Ecommerce", designation: "Shopify Developer", reporting: "Suman Saha", joined: "29 Sep 2025" },
+  { id: "CT00048", name: "Paras Bagri", dept: "Technology", designation: "Junior Front-End Developer", reporting: "Suman Saha", joined: "05 Jan 2026" },
+  { id: "CT00041", name: "Vibudh Rathore", dept: "Technology", designation: "Junior Developer", reporting: "Shubham Pandey", joined: "30 Oct 2025" },
+  { id: "CT00021", name: "Supraja Ramkumar", dept: "Ecommerce", designation: "Ecommerce Executive", reporting: "Soumya Kanta Mohanty", joined: "12 May 2025" },
+  { id: "CT00050", name: "Chandan Kumawat", dept: "Design", designation: "Shopify Developer", reporting: "Suman Saha", joined: "08 Jan 2026" },
+  { id: "CT0006", name: "Manav Goel", dept: "Marketing", designation: "Marketing Manager - CRM", reporting: "Parveen Jahan", joined: "01 Dec 2024" },
+  { id: "CT00035", name: "Suhita Paik", dept: "Site Operations", designation: "Senior Product Manager", reporting: "Parveen Jahan", joined: "11 Sep 2025" },
+  { id: "CT00045", name: "Bhoopendra Singh", dept: "Design", designation: "Senior Shopify Developer", reporting: "Suman Saha", joined: "24 Nov 2025" },
+  { id: "CT00025", name: "Mohammad Arif Uzair", dept: "Ecommerce", designation: "Senior Shopify Developer", reporting: "Suman Saha", joined: "29 May 2025" },
+  { id: "CT0002", name: "Parveen Jahan", dept: "Leadership", designation: "Director", reporting: "", joined: "26 Jun 2024" },
+  { id: "CT00027", name: "Parthapratim Dash", dept: "Ecommerce", designation: "Associate Site Ops Manager", reporting: "Soumya Kanta Mohanty", joined: "01 Jul 2025" },
 ];
 
-const alerts = [
-  { icon: "🎂", title: "Priya Rao — 2-year anniversary", time: "Today · Engineering", type: "milestone" },
-  { icon: "⭐", title: "Arjun Mehta — Goal completed", time: "Yesterday · Product", type: "success" },
-  { icon: "⚠️", title: "Sneha R. — Low mood streak", time: "3 days · Needs follow-up", type: "risk" },
-  { icon: "📅", title: "Ravi S. — No check-in (5 days)", time: "Inactive · Sales", type: "inactive" },
-];
+const deptColors = {
+  "Technology":     { bg: "#EDE9FE", color: "#6C5CE7" },
+  "Ecommerce":      { bg: "#E6F1FB", color: "#185FA5" },
+  "Design":         { bg: "#FBEAF0", color: "#993556" },
+  "Site Operations":{ bg: "#E1F5EE", color: "#0F6E56" },
+  "Marketing":      { bg: "#FAEEDA", color: "#854F0B" },
+  "Human Resource": { bg: "#FCEBEB", color: "#A32D2D" },
+  "Leadership":     { bg: "#F1EFE8", color: "#5F5E5A" },
+};
 
-const weekMoods = [
-  { day: "Mon", count: 8, color: "#5DCAA5" },
-  { day: "Tue", count: 12, color: "#5DCAA5" },
-  { day: "Wed", count: 6, color: "#EF9F27" },
-  { day: "Thu", count: 14, color: "#5DCAA5" },
-  { day: "Fri", count: 21, color: "#1D9E75" },
-  { day: "Sat", count: 5, color: "#EF9F27" },
-  { day: "Sun", count: 2, color: "#E24B4A" },
-];
+const deptStats = Object.entries(
+  employees.reduce((acc, e) => {
+    const d = e.dept || "Other";
+    acc[d] = (acc[d] || 0) + 1;
+    return acc;
+  }, {})
+).sort((a, b) => b[1] - a[1]);
 
-const departments = [
-  { name: "Engineering", score: 8.2, pct: 82 },
-  { name: "Product", score: 7.4, pct: 74 },
-  { name: "Sales", score: 6.9, pct: 69 },
-  { name: "Design", score: 5.2, pct: 52 },
-  { name: "HR", score: 8.8, pct: 88 },
-];
+const maxCount = Math.max(...deptStats.map(([, c]) => c));
 
-function getMoodChip(mood) {
-  if (mood >= 8) return { bg: "#E1F5EE", color: "#0F6E56" };
-  if (mood >= 5) return { bg: "#FAEEDA", color: "#854F0B" };
-  return { bg: "#FCEBEB", color: "#A32D2D" };
+const recentJoiners = [...employees]
+  .filter(e => e.joined.includes("2026"))
+  .sort((a, b) => new Date(b.joined) - new Date(a.joined));
+
+function getInitials(name) {
+  return name.split(" ").slice(0, 2).map(n => n[0]).join("").toUpperCase();
 }
 
-function getBarColor(score) {
-  if (score >= 7.5) return "#1D9E75";
-  if (score >= 5) return "#EF9F27";
-  return "#E24B4A";
+function getDC(dept) {
+  return deptColors[dept] || { bg: "#F1EFE8", color: "#5F5E5A" };
 }
 
 export default function Dashboard() {
@@ -53,126 +80,125 @@ export default function Dashboard() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div style={{ minHeight: "100vh", background: "#F8F7FF", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#F8F7FF", fontFamily: "system-ui, -apple-system, sans-serif", color: "#1a1a2e" }}>
 
         {/* Header */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 1.5rem", background: "#fff", borderBottom: "1px solid #ebebeb" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem 1.5rem", background: "#fff", borderBottom: "1px solid #ebebeb", position: "sticky", top: 0, zIndex: 10 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 38, height: 38, borderRadius: 10, background: "#6C5CE7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>🧞</div>
+            <div style={{ width: 38, height: 38, borderRadius: 10, background: "#6C5CE7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>🧞</div>
             <div>
-              <div style={{ fontWeight: 600, fontSize: 17, color: "#1a1a2e" }}>Genie</div>
+              <div style={{ fontWeight: 600, fontSize: 17 }}>Genie</div>
               <div style={{ fontSize: 12, color: "#888" }}>Manager dashboard</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#EDE9FE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600, color: "#6C5CE7" }}>KA</div>
-            <span style={{ fontSize: 13, color: "#555" }}>Kushi · HR Manager</span>
+            <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#FCEBEB", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 600, color: "#A32D2D" }}>KA</div>
+            <span style={{ fontSize: 13, color: "#555" }}>Khushi Ash · HR Manager</span>
           </div>
         </div>
 
         <div style={{ padding: "1.5rem", maxWidth: 1100, margin: "0 auto" }}>
 
-          {/* Section label */}
-          <div style={{ fontSize: 11, color: "#999", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem" }}>
-            Overview — June 2026
-          </div>
+          <div style={{ fontSize: 11, color: "#999", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem" }}>Overview — June 2026</div>
 
           {/* Stat Cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: "1.5rem" }}>
             {[
-              { val: "48", label: "Total employees", delta: "3 joined this month", up: true },
-              { val: "36", label: "Checked in today", delta: "75% response rate", up: true },
-              { val: "7.4", label: "Avg mood score", delta: "+0.3 vs last week", up: true },
-              { val: "4", label: "At-risk employees", delta: "Needs attention", up: false },
+              { val: "37", label: "Total employees", delta: "Across 6 departments" },
+              { val: String(recentJoiners.length), label: "Joined in 2026", delta: "New this year" },
+              { val: "11", label: "Technology team", delta: "Largest department" },
+              { val: "1", label: "HR team", delta: "That's you, Khushi!" },
             ].map((s, i) => (
               <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "1px solid #ebebeb" }}>
-                <div style={{ fontSize: 26, fontWeight: 600, color: "#1a1a2e" }}>{s.val}</div>
-                <div style={{ fontSize: 12, color: "#888", marginTop: 2 }}>{s.label}</div>
-                <div style={{ fontSize: 12, marginTop: 8, color: s.up ? "#0F6E56" : "#A32D2D" }}>
-                  {s.up ? "↑" : "↓"} {s.delta}
-                </div>
+                <div style={{ fontSize: 28, fontWeight: 600, color: "#6C5CE7" }}>{s.val}</div>
+                <div style={{ fontSize: 13, fontWeight: 500, marginTop: 2 }}>{s.label}</div>
+                <div style={{ fontSize: 11, marginTop: 6, color: "#888" }}>{s.delta}</div>
               </div>
             ))}
-          </div>
-
-          {/* Mood Chart */}
-          <div style={{ background: "#fff", border: "1px solid #ebebeb", borderRadius: 12, padding: "1.25rem", marginBottom: "1.5rem" }}>
-            <div style={{ fontWeight: 500, fontSize: 14, marginBottom: "1rem", color: "#1a1a2e" }}>Team mood — this week</div>
-            <div style={{ display: "flex", gap: 8, alignItems: "flex-end", height: 90 }}>
-              {weekMoods.map((m) => (
-                <div key={m.day} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, flex: 1 }}>
-                  <div style={{ fontSize: 11, fontWeight: 500, color: "#555" }}>{m.count}</div>
-                  <div style={{ width: "100%", borderRadius: "4px 4px 0 0", background: m.color, height: `${(m.count / 21) * 60}px` }} />
-                  <div style={{ fontSize: 11, color: "#999" }}>{m.day}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", gap: 16, marginTop: 12 }}>
-              {[["#1D9E75", "Positive (8–10)"], ["#EF9F27", "Neutral (5–7)"], ["#E24B4A", "Low (1–4)"]].map(([c, l]) => (
-                <div key={l} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#888" }}>
-                  <div style={{ width: 10, height: 10, borderRadius: 2, background: c }} />
-                  {l}
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Two columns */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: "1.5rem" }}>
 
-            {/* Recent check-ins */}
+            {/* Department breakdown */}
             <div style={{ background: "#fff", border: "1px solid #ebebeb", borderRadius: 12, padding: "1.25rem" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                <div style={{ fontWeight: 500, fontSize: 14, color: "#1a1a2e" }}>Recent check-ins</div>
-                <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 20, background: "#EDE9FE", color: "#534AB7" }}>Live</span>
-              </div>
-              {employees.map((e) => {
-                const chip = getMoodChip(e.mood);
+              <div style={{ fontWeight: 500, fontSize: 14, marginBottom: "1rem" }}>Department headcount</div>
+              {deptStats.map(([dept, count]) => {
+                const dc = getDC(dept);
                 return (
-                  <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #f5f5f5" }}>
-                    <div style={{ width: 30, height: 30, borderRadius: "50%", background: e.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 600, color: e.color, flexShrink: 0 }}>{e.initials}</div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a2e" }}>{e.name}</div>
-                      <div style={{ fontSize: 11, color: "#999" }}>{e.dept}</div>
+                  <div key={dept} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: "1px solid #f5f5f5" }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: dc.color, flexShrink: 0 }} />
+                    <div style={{ flex: 1, fontSize: 13 }}>{dept}</div>
+                    <div style={{ flex: 2, height: 7, background: "#f5f5f5", borderRadius: 4, overflow: "hidden" }}>
+                      <div style={{ height: "100%", borderRadius: 4, background: dc.color, width: `${(count / maxCount) * 100}%` }} />
                     </div>
-                    <div style={{ fontSize: 11, padding: "3px 8px", borderRadius: 20, fontWeight: 500, background: chip.bg, color: chip.color }}>
-                      {e.mood} — {e.status}
-                    </div>
+                    <div style={{ fontSize: 13, fontWeight: 600, width: 24, textAlign: "right", color: dc.color }}>{count}</div>
                   </div>
                 );
               })}
             </div>
 
-            {/* Alerts */}
+            {/* Recent joiners */}
             <div style={{ background: "#fff", border: "1px solid #ebebeb", borderRadius: 12, padding: "1.25rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-                <div style={{ fontWeight: 500, fontSize: 14, color: "#1a1a2e" }}>Milestone alerts</div>
-                <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 20, background: "#FAEEDA", color: "#854F0B" }}>4 new</span>
+                <div style={{ fontWeight: 500, fontSize: 14 }}>Recent joiners</div>
+                <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 20, background: "#EDE9FE", color: "#534AB7" }}>2026</span>
               </div>
-              {alerts.map((a, i) => (
-                <div key={i} style={{ display: "flex", gap: 10, padding: "8px 0", borderBottom: i < alerts.length - 1 ? "1px solid #f5f5f5" : "none" }}>
-                  <div style={{ fontSize: 18, lineHeight: 1.5 }}>{a.icon}</div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 500, color: "#1a1a2e" }}>{a.title}</div>
-                    <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{a.time}</div>
+              {recentJoiners.map((e) => {
+                const dc = getDC(e.dept);
+                return (
+                  <div key={e.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: "1px solid #f5f5f5" }}>
+                    <div style={{ width: 30, height: 30, borderRadius: "50%", background: dc.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 600, color: dc.color, flexShrink: 0 }}>{getInitials(e.name)}</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 13, fontWeight: 500 }}>{e.name}</div>
+                      <div style={{ fontSize: 11, color: "#999" }}>{e.designation} · {e.dept}</div>
+                    </div>
+                    <div style={{ fontSize: 11, color: "#bbb" }}>{e.joined}</div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          {/* Department breakdown */}
+          {/* Full employee table */}
           <div style={{ background: "#fff", border: "1px solid #ebebeb", borderRadius: 12, padding: "1.25rem" }}>
-            <div style={{ fontWeight: 500, fontSize: 14, marginBottom: "1rem", color: "#1a1a2e" }}>Department mood breakdown</div>
-            {departments.map((d) => (
-              <div key={d.name} style={{ display: "flex", alignItems: "center", gap: 12, padding: "8px 0", borderBottom: "1px solid #f5f5f5" }}>
-                <div style={{ fontSize: 13, color: "#1a1a2e", width: 90, flexShrink: 0 }}>{d.name}</div>
-                <div style={{ flex: 1, height: 8, background: "#f5f5f5", borderRadius: 4, overflow: "hidden" }}>
-                  <div style={{ height: "100%", borderRadius: 4, background: getBarColor(d.score), width: `${d.pct}%` }} />
-                </div>
-                <div style={{ fontSize: 12, color: "#888", width: 28, textAlign: "right", flexShrink: 0 }}>{d.score}</div>
-              </div>
-            ))}
+            <div style={{ fontWeight: 500, fontSize: 14, marginBottom: "1rem" }}>
+              All employees <span style={{ fontSize: 12, color: "#bbb", fontWeight: 400 }}>({employees.length} total)</span>
+            </div>
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                <thead>
+                  <tr style={{ borderBottom: "1px solid #ebebeb" }}>
+                    {["ID", "Name", "Department", "Designation", "Reporting To", "Joined"].map(h => (
+                      <th key={h} style={{ textAlign: "left", padding: "8px 10px", fontSize: 11, color: "#bbb", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {employees.map((e) => {
+                    const dc = getDC(e.dept);
+                    const isMe = e.id === "CT0009";
+                    return (
+                      <tr key={e.id} style={{ borderBottom: "1px solid #f5f5f5", background: isMe ? "#FFF8F8" : "transparent" }}>
+                        <td style={{ padding: "9px 10px", color: "#ccc", fontFamily: "monospace", fontSize: 11, whiteSpace: "nowrap" }}>{e.id}</td>
+                        <td style={{ padding: "9px 10px", whiteSpace: "nowrap" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <div style={{ width: 26, height: 26, borderRadius: "50%", background: dc.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 600, color: dc.color, flexShrink: 0 }}>{getInitials(e.name)}</div>
+                            <span style={{ fontWeight: isMe ? 600 : 400 }}>{e.name}{isMe ? " 👋" : ""}</span>
+                          </div>
+                        </td>
+                        <td style={{ padding: "9px 10px", whiteSpace: "nowrap" }}>
+                          <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 20, background: dc.bg, color: dc.color }}>{e.dept}</span>
+                        </td>
+                        <td style={{ padding: "9px 10px", color: "#555", fontSize: 12 }}>{e.designation || "—"}</td>
+                        <td style={{ padding: "9px 10px", color: "#888", fontSize: 12, whiteSpace: "nowrap" }}>{e.reporting || "—"}</td>
+                        <td style={{ padding: "9px 10px", color: "#bbb", fontSize: 12, whiteSpace: "nowrap" }}>{e.joined}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>
