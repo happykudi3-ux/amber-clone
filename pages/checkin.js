@@ -57,14 +57,34 @@ export default function CheckIn() {
   const [note, setNote] = useState("");
   const [status, setStatus] = useState("idle");
 
-  function handleIdBlur() {
-    const emp = employees.find(e => e.id.toLowerCase() === empId.trim().toLowerCase());
-    if (emp) {
-      setMatched(emp);
-      setIdError("");
-    } else {
-      setMatched(null);
-      if (empId.trim()) setIdError("Employee ID not found. Try e.g. CT0009");
+  async function handleIdBlur() {
+  const emp = employees.find(e => e.id.toLowerCase() === empId.trim().toLowerCase());
+  if (emp) {
+    setMatched(emp);
+    setIdError("");
+
+    // Check milestone
+    const res = await fetch(`/api/milestones?id=${emp.id}`);
+    const data = await res.json();
+    setMilestone(data.milestone || null);
+
+    // Send nudge email
+    await fetch("/api/send-nudge", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: emp.name,
+        dept: emp.dept,
+        milestone: data.milestone || null,
+      }),
+    });
+
+  } else {
+    setMatched(null);
+    setMilestone(null);
+    if (empId.trim()) setIdError("Employee ID not found. Try e.g. CT0009");
+  }
+}
     }
   }
 
