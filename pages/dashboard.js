@@ -73,7 +73,14 @@ function getDC(dept) {
   return deptColors[dept] || { bg: "#F1EFE8", color: "#5F5E5A" };
 }
 
-export default function Dashboard() {
+export default function Dashboard() {const [moodStats, setMoodStats] = useState(null);
+
+useEffect(() => {
+  fetch("/api/mood-stats")
+    .then(r => r.json())
+    .then(setMoodStats)
+    .catch(() => {});
+}, []);
   return (
     <>
       <Head>
