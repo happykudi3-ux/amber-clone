@@ -56,35 +56,34 @@ export default function CheckIn() {
   const [mood, setMood] = useState(null);
   const [note, setNote] = useState("");
   const [status, setStatus] = useState("idle");
+  const [milestone, setMilestone] = useState(null);
 
   async function handleIdBlur() {
-  const emp = employees.find(e => e.id.toLowerCase() === empId.trim().toLowerCase());
-  if (emp) {
-    setMatched(emp);
-    setIdError("");
+    const emp = employees.find(e => e.id.toLowerCase() === empId.trim().toLowerCase());
+    if (emp) {
+      setMatched(emp);
+      setIdError("");
 
-    // Check milestone
-    const res = await fetch(`/api/milestones?id=${emp.id}`);
-    const data = await res.json();
-    setMilestone(data.milestone || null);
+      // Check milestone
+      const res = await fetch(`/api/milestones?id=${emp.id}`);
+      const data = await res.json();
+      setMilestone(data.milestone || null);
 
-    // Send nudge email
-    await fetch("/api/send-nudge", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: emp.name,
-        dept: emp.dept,
-        milestone: data.milestone || null,
-      }),
-    });
+      // Send nudge email
+      await fetch("/api/send-nudge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: emp.name,
+          dept: emp.dept,
+          milestone: data.milestone || null,
+        }),
+      });
 
-  } else {
-    setMatched(null);
-    setMilestone(null);
-    if (empId.trim()) setIdError("Employee ID not found. Try e.g. CT0009");
-  }
-}
+    } else {
+      setMatched(null);
+      setMilestone(null);
+      if (empId.trim()) setIdError("Employee ID not found. Try e.g. CT0009");
     }
   }
 
@@ -117,7 +116,7 @@ export default function CheckIn() {
           <div style={{ fontSize: 56 }}>{moods.find(m => m.val === mood)?.emoji}</div>
           <div style={{ fontSize: 22, fontWeight: 600, marginTop: 16 }}>Thanks, {matched?.name?.split(" ")[0]}!</div>
           <div style={{ color: "#888", marginTop: 8 }}>Your check-in has been saved.</div>
-          <button onClick={() => { setStatus("idle"); setEmpId(""); setMatched(null); setMood(null); setNote(""); }}
+          <button onClick={() => { setStatus("idle"); setEmpId(""); setMatched(null); setMood(null); setNote(""); setMilestone(null); }}
             style={{ marginTop: 24, padding: "10px 24px", background: "#6C5CE7", color: "#fff", border: "none", borderRadius: 8, cursor: "pointer", fontSize: 14 }}>
             Check in again
           </button>
@@ -159,6 +158,17 @@ export default function CheckIn() {
               </div>
             )}
           </div>
+
+          {milestone && (
+            <div style={{ marginBottom: "1rem", padding: "10px 14px", background: "#FFFBEB", border: "1px solid #FDE68A", borderRadius: 10 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: "#92400E" }}>
+                🎯 {milestone === 365 ? "1 Year" : `${milestone}-Day`} Check-in
+              </div>
+              <div style={{ fontSize: 12, color: "#B45309", marginTop: 3 }}>
+                This is a milestone check-in. Your feedback helps us support you better!
+              </div>
+            </div>
+          )}
 
           <div style={{ marginBottom: "1.25rem" }}>
             <label style={{ fontSize: 12, color: "#666", display: "block", marginBottom: 10 }}>How's your mood?</label>
