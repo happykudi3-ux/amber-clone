@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const sql = neon(process.env.DATABASE_URL);
+    const sql = neon(process.env.GENIE_DB_URL);
     await sql`
       INSERT INTO mood_checkins (employee_id, employee_name, dept, mood, note)
       VALUES (${employee_id}, ${employee_name}, ${dept}, ${mood}, ${note || null})
