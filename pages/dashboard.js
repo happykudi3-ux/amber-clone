@@ -112,10 +112,10 @@ useEffect(() => {
           {/* Stat Cards */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: "1.5rem" }}>
             {[
-              { val: "37", label: "Total employees", delta: "Across 6 departments" },
-              { val: String(recentJoiners.length), label: "Joined in 2026", delta: "New this year" },
-              { val: "11", label: "Technology team", delta: "Largest department" },
-              { val: "1", label: "HR team", delta: "That's you, Khushi!" },
+              { val: "37", label: "Total employees", delta: "Across 7 departments" },
+{ val: moodStats?.checkins_today ?? "—", label: "Check-ins today", delta: `${moodStats?.total_checkins ?? 0} all-time` },
+{ val: moodStats?.avg_mood ? `${moodStats.avg_mood}/5` : "—", label: "Avg mood score", delta: "From all check-ins" },
+{ val: moodStats?.happiest_dept ?? "—", label: "Happiest dept", delta: moodStats?.happiest_dept_score ? `Avg ${moodStats.happiest_dept_score}/5` : "No data yet" },
             ].map((s, i) => (
               <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "1rem 1.25rem", border: "1px solid #ebebeb" }}>
                 <div style={{ fontSize: 28, fontWeight: 600, color: "#6C5CE7" }}>{s.val}</div>
