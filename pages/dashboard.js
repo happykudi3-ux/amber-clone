@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 
 const employees = [
   { id: "CT00011", name: "Apratim Mahata", dept: "Technology", designation: "Junior Developer", reporting: "Vedang Singh", joined: "01 Sep 2024" },
